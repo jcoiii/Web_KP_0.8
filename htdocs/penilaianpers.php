@@ -118,10 +118,7 @@ if(!isset($_SESSION["sess_user"])){
         
         <!-- EDIT DATABASE BUAT LOGBOOK-->                               
 <?php 
-
-$user=$_SESSION["sess_user"]; 
-
-
+$user=$_SESSION["sess_user"];
 if(isset($_POST["submit"])){  
 if(!empty($_POST['tgl']) && !empty($_POST['kgt'])) 
 {  

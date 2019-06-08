@@ -40,7 +40,7 @@ height: 10em;
     
 </style>
 </head>
-
+    
     <body class="text-center" style="background-color:powderblue;">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
                 <a class="navbar-brand" href="home.php">Beranda</a>		
@@ -112,7 +112,7 @@ height: 10em;
       <label for="inputhasil" class="sr-only">Hasil</label>
             <input type="text" id="hsl" class="form-control" placeholder="Hasil Kegiatan" name="hsl" required="" autofocus="">
      <br>
-		<button class="btn btn-lg btn-primary btn-block" type="submit"  value="logbook" name="submit" >Masukkan</button>       
+		<button class="btn btn-lg btn-danger btn-block" type="submit"  value="logbook" name="submit" >Masukkan</button>       
     </form> 
 </div>
         

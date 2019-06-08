@@ -64,7 +64,7 @@ div.form-group {
                              </li>
 
                              <li class="nav-item">
-                                <a class="nav-link" href="logbookmhs.php">Logbook</a>
+                                <a class="nav-link" href="arsiplogbook.php">Logbook</a>
                              </li>              
 
                              <li class="nav-item">
@@ -100,7 +100,9 @@ div.form-group {
 <form action="laporan.php" method="POST" enctype="multipart/form-data">
     Pilih File yang akan diunggah :
     <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Unggah Laporan" name="submit">
+    <br>
+    <br>
+    <input class="btn btn-danger" type="submit" value="Unggah Laporan" name="submit">
 </form>   
  <br>
 
@@ -161,7 +163,7 @@ if(isset($_POST["submit"]) && !empty($_FILES["fileToUpload"]["name"])){
     }
 }
 else{
-    $statusMsg = 'Penamaan File = KELOMPOK_NPM_PERUSAHAAN dengan ekstensi .pdf';
+    $statusMsg = 'Penamaan File = KELOMPOK_PERUSAHAAN dengan ekstensi .pdf';
 }
 echo $statusMsg;
 ?>    

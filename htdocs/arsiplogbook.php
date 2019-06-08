@@ -137,7 +137,7 @@ $con->close();
  <br>   
 <br>    
 <div class="container">
-  <a class="btn btn-danger" href="logbookmhs.php" role="button">Input Data Logbook</a>
+  <a class="btn btn-primary" href="logbookmhs.php" role="button">Input Data Logbook</a>
 </div>        
         
  

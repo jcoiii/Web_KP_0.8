@@ -55,9 +55,9 @@
     
 <!--Pakai Untuk Login Admin Local  -->     
 <?php  
-$mhs="student";
+$mhs="mahas";
 $adm="admin";
-$prs="comp";
+$prs="perus";
 $dos="dosen";
 if(isset($_POST["submit"])){  
   
@@ -68,8 +68,11 @@ if(!empty($_POST['emailadd']) && !empty($_POST['pass'])) {
   
     $con=mysqli_connect('localhost','root','') or die(mysqli_error());  
     mysqli_select_db($con, 'kp') or die("cannot select DB");  
-  
-    $query=mysqli_query($con, "SELECT username,email,password FROM dosen WHERE email='".$emailadd."' UNION SELECT username,email,password FROM mahasiswa WHERE email='".$emailadd."' UNION SELECT username,email,password FROM perusahaan WHERE email='".$emailadd."'");  
+    $cen=mysqli_connect('localhost','root','') or die(mysqli_error());  
+    mysqli_select_db($cen, 'kp') or die("cannot select DB");
+    
+    $query=mysqli_query($con, "SELECT pengguna,username,email,password FROM dosen WHERE email='".$emailadd."' UNION SELECT pengguna,username,email,password FROM mahasiswa WHERE email='".$emailadd."' UNION SELECT pengguna,username,email,password FROM admin WHERE email='".$emailadd."' UNION SELECT pengguna,username,email,password FROM perusahaan WHERE email='".$emailadd."'");
+    
     $numrows=mysqli_num_rows($query);  
     if($numrows!=0){
         
@@ -78,30 +81,33 @@ if(!empty($_POST['emailadd']) && !empty($_POST['pass'])) {
         $dbuser=$row['username'];        
         $dbemailadd=$row['email'];      
         $dbpassword=$row['password'];
+        $dbpengguna=$row['pengguna'];
         }  
-
+        
         if(password_verify($pass, $dbpassword)){  
-            if(strpos($dbemailadd,$mhs) !== false){
+            if(strpos($dbpengguna,$mhs) !== false){
                 session_start();  
                 $_SESSION['sess_user']=$dbuser;  
                 header("Location: home.php");  
             }
-            else if(strpos($dbemailadd,$adm) !== false){
+            else if(strpos($dbpengguna,$adm) !== false){
                 session_start();  
                 $_SESSION['sess_user']=$dbuser;  
-                header("Location: homeadm.php");  
+                header("Location: homeadmin.php");  
             }
-            else if(strpos($dbemailadd,$prs) !== false){
+            else if(strpos($dbpengguna,$prs) !== false){
                 session_start();  
                 $_SESSION['sess_user']=$dbuser;  
                 header("Location: homepersh.php");  
             }
-            else{
+            elseif(strpos($dbpengguna,$dos) !== false){
                 session_start();  
                 $_SESSION['sess_user']=$dbuser;  
                 header("Location: homedosbing.php"); 
             }
-            
+            else{
+                echo 'Anda Siapa?'; 
+            } 
         }  
     } 
     else {  
